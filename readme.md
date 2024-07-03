@@ -1,1 +1,3 @@
-### Solutions to questions for LF DB assingments.
+# Postgresql Assingments
+
+## Solutions to questions for LF DB assingments
