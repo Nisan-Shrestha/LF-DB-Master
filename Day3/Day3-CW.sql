@@ -93,3 +93,32 @@ from
     )
 where
     rank = 2
+    -- Dep wise max salary
+select
+    max(salary_amount) as max_salary,
+    dept_name
+from
+    employees E
+    inner join salaries S on E.emp_id = S.emp_id
+    inner join departments D on E.emp_dept_id = D.dept_id
+group by
+    dept_name;
+
+with
+    MaxSalaries AS (
+        select
+            max(emp_salary) as max_salary,
+            emp_dept_id
+        from
+            employees E
+            -- inner join departments D on E.emp_dept_id = D.dept_id
+        group by
+            emp_dept_id
+    )
+select
+    max_salary,
+    dept_name
+from
+    MaxSalaries
+    inner join departments D on MaxSalaries.emp_dept_id = D.dept_id;
+
